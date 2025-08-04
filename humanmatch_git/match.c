@@ -114,8 +114,15 @@ First:
             scanf("%d",&hnumber);
             getchar();
             if(hnumber>1){
+                char gender[20];
+                if(!strcmp(h[0].gender,"man")){
+                    strcpy(gender,"男");
+                }
+                else{
+                    strcpy(gender,"女");
+                }
                 printf("お前、まったくクズだな。今はお前が本当に気持ち悪いと思ってるよ。\n");
-                printf("你这家伙，简直就是个渣男，我现在都觉得你很恶心欸。\n");
+                printf("你这家伙，简直就是个渣%s，我现在都觉得你很恶心欸。\n",gender);
                 printf("回车下一步--->\n");
                 getchar();
             }
@@ -190,6 +197,8 @@ First:
             }
             printf("%s对你的外貌评级是%d的，对你的财产评级是%f\n",gender_call,human[i].judge_other_facegrade,human[i].judge_other_possession);
             final_judge(&human[i]);
+            float matchrate=calculate_matchrate(&human[i])*100;
+            printf("她和你的匹配度为%.2f%%,其中超出100%%部分为你超过%s预期部分，不足100%%部分为你距离%s预期部分，你可以通过改变条件来完成best match",matchrate,gender_call,gender_call);
         }
         char  endgoon[20];
         printf("まだ新しい人を探したいですか、それとも再度告白したいですか？(はい/いいえ)");

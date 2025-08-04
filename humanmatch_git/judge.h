@@ -5,13 +5,25 @@
 int woman_judge_perference(Human *she,Human *other){
     if(!strcmp(other->gender,"man")){
         she->judge_other_facegrade=other->facegrade-2;
-        if(she->is_confident==1){
+        if(other->is_confident!=1){
+            she->judge_other_facegrade-=1;
+        }
+        if(other->is_make!=1){
+            she->judge_other_facegrade-=1;
+        }
+        if(other->is_retouch!=1){
             she->judge_other_facegrade-=1;
         }
     }
     else{
         she->judge_other_facegrade=other->facegrade-1;
-        if(she->is_confident==1){
+        if(other->is_confident!=1){
+            she->judge_other_facegrade-=1;
+        }
+        if(other->is_make!=1){
+            she->judge_other_facegrade-=1;
+        }
+        if(other->is_retouch!=1){
             she->judge_other_facegrade-=1;
         }
     }
@@ -23,12 +35,22 @@ int woman_judge_perference(Human *she,Human *other){
 int man_judge_perference(Human *he,Human *other){
    if(!strcmp(other->gender,"man")){
         he->judge_other_facegrade=other->facegrade-1;
-        if(he->is_confident==1){
+        if(other->is_confident!=1){
+            he->judge_other_facegrade-=1;
+        }
+        if(other->is_make==1){
+            he->judge_other_facegrade-=1;}
+
+        if(other->is_retouch==1){
             he->judge_other_facegrade-=1;
         }
     }
+    
     else{
-        if(he->is_confident==1){
+        if(other->is_confident!=1){
+            he->judge_other_facegrade=other->facegrade-1;
+        }
+        if(other->is_retouch==1){
             he->judge_other_facegrade-=1;
         }
     }
@@ -36,6 +58,7 @@ int man_judge_perference(Human *he,Human *other){
         he->judge_other_facegrade=1;
     }
     return he->judge_other_facegrade;
+
 }
 float possession_generate(Human *h){
     h->judge_other_possession=h->pos->car+h->pos->house+h->pos->salarygrade*0.4;
@@ -100,5 +123,7 @@ void final_judge(Human *h){
     }
 }
 
-
+float calculate_matchrate(Human *h){
+    return (h->finaljudge-h->facegrade)/h->facegrade;
+}
 #endif
