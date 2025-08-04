@@ -1,3 +1,0 @@
-OPERATION PROGRAM
-这和一个单独编写的拥有makefile文件以及各种运算文件的建议c计算程序
-并且通过git传到了github，仅用于学习实践使用。
