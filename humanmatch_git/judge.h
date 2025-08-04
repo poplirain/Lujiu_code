@@ -75,7 +75,7 @@ int man_judge_perference(Human *he,Human *other){
 
 }
 float possession_generate(Human *h){
-    h->judge_other_possession=h->pos->car+h->pos->house+h->pos->salarygrade*0.4;
+    h->judge_other_possession=h->pos->car+h->pos->house+h->pos->salarygrade*0.6;
     return h->judge_other_possession;
 }
 float woman_judge_possession(Human *she,Human *other){
