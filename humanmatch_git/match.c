@@ -86,7 +86,7 @@ int main()
     getchar();
     human[0].facegrade=human[0].truegrade;
     human[0].finaljudge=possession_generate(&human[0])*1.1+human[0].facegrade*0.9;
-    printf("你的最终评级为：%f",human[0].finaljudge);
+    printf("你的最终评级为：%f\n",human[0].finaljudge);
     while(1)
     {
         if(is_first==true){
@@ -198,7 +198,8 @@ First:
             printf("%s对你的外貌评级是%d的，对你的财产评级是%f\n",gender_call,human[i].judge_other_facegrade,human[i].judge_other_possession);
             final_judge(&human[i]);
             float matchrate=calculate_matchrate(&human[i])*100;
-            printf("她和你的匹配度为%.2f%%,其中超出100%%部分为你超过%s预期部分，不足100%%部分为你距离%s预期部分，你可以通过改变条件来完成best match",matchrate,gender_call,gender_call);
+            printf("%s和你的匹配度为%.2f%%\n",gender_call,matchrate);
+            printf("%%部分为你超过%s预期部分，不足100%%部分为你距离%s预期部分，你可以通过改变条件来完成best match\n",gender_call,gender_call);
         }
         char  endgoon[20];
         printf("まだ新しい人を探したいですか、それとも再度告白したいですか？(はい/いいえ)");

@@ -3,29 +3,36 @@
 #include "human.h"
 #include<string.h>
 int woman_judge_perference(Human *she,Human *other){
+    int reduce_score=0;
     if(!strcmp(other->gender,"man")){
-        she->judge_other_facegrade=other->facegrade-2;
+        she->judge_other_facegrade=other->facegrade-1;
+        reduce_score++;
         if(other->is_confident!=1){
             she->judge_other_facegrade-=1;
+            reduce_score++;
         }
         if(other->is_make!=1){
             she->judge_other_facegrade-=1;
+            reduce_score++;
         }
-        if(other->is_retouch!=1){
-            she->judge_other_facegrade-=1;
+        if(other->is_retouch!=1&&reduce_score<3){
+            she->judge_other_facegrade-=1;    
         }
+        reduce_score=0;
     }
     else{
-        she->judge_other_facegrade=other->facegrade-1;
         if(other->is_confident!=1){
             she->judge_other_facegrade-=1;
+            reduce_score++;
         }
         if(other->is_make!=1){
             she->judge_other_facegrade-=1;
+            reduce_score++;
         }
-        if(other->is_retouch!=1){
+        if(other->is_retouch!=1&&reduce_score<2){
             she->judge_other_facegrade-=1;
         }
+        reduce_score=0;
     }
     if(she->judge_other_facegrade<0){
         she->judge_other_facegrade=1;
@@ -33,17 +40,24 @@ int woman_judge_perference(Human *she,Human *other){
     return she->judge_other_facegrade;
 }
 int man_judge_perference(Human *he,Human *other){
+    int reduce_score=0;
    if(!strcmp(other->gender,"man")){
         he->judge_other_facegrade=other->facegrade-1;
+        reduce_score++;
         if(other->is_confident!=1){
             he->judge_other_facegrade-=1;
+            reduce_score++;
         }
         if(other->is_make==1){
-            he->judge_other_facegrade-=1;}
-
-        if(other->is_retouch==1){
             he->judge_other_facegrade-=1;
+            reduce_score++;
         }
+
+        if(other->is_retouch==1&&reduce_score<3){
+            he->judge_other_facegrade-=1;
+
+        }
+        reduce_score=0;
     }
     
     else{
@@ -124,6 +138,6 @@ void final_judge(Human *h){
 }
 
 float calculate_matchrate(Human *h){
-    return (h->finaljudge-h->facegrade)/h->facegrade;
+    return h->finaljudge/h->facegrade;
 }
 #endif
