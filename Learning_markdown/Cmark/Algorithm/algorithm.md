@@ -46,4 +46,79 @@ F（n）{
  
         ("%d年%d月%d日是该年的第%d天\n", year, month, day, totalDays);
 
-##
+## 
+
+
+
+
+# 模拟题
+## 1
+牛牛从键盘输入一个长度为 n 的数组，问你能否用这个数组组成一个链表，并顺序输出链表每个节点的值。
+输入描述：
+第一行输入一个正整数 n ，表示数组的长度
+输出描述：
+制作一个链表然后输出这个链表的值
+示例1
+输入：
+4
+5 4 2 1
+复制
+输出：
+5 4 2 1
+复制
+说明：
+请实现链表后再遍历输出结果！
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// write your code here......
+struct List{
+    int val;
+ struct List *next;
+};
+struct List*creatList(){
+    struct List*head=(struct List*)malloc(sizeof(struct List));    
+    head->val=0;
+    head->next=NULL;
+    return head;
+}
+void addNode(struct List *head, int val){
+    struct List*next=(struct List*)malloc(sizeof(struct List));
+    next->val=val;
+    next->next=head->next;
+    head->next=next;
+}
+void print(struct List*l){
+    l=l->next;
+    while(l!=NULL){
+        printf("%d ",l->val);
+        l=l->next;
+    }
+}
+int main() {
+
+    int n;
+    scanf("%d",&n);
+
+    int* arr=(int*)malloc(n*sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d",&arr[i]);
+    }
+    struct List*l;
+    l=creatList();
+    for(int i=n-1;i>=0;i--){
+        addNode(l,arr[i]);
+    }
+    print(l);
+    // write your code here......
+    
+
+    free(arr);
+    return 0;
+}
+
+
+
+## 2

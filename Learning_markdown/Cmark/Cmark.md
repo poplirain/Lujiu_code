@@ -186,4 +186,96 @@ _itoa_s 和 _ultoa_s：安全版本的整数转换函数，将整数转换为字
     errno_t _strlwr_s(char *str, size_t numberOfElements);
     errno_t _strupr_s(char *str, size_t numberOfElements);
 
-# 
+### 文件
+FILE*pf 文件指针变量
+为文件开辟一个相应的信息区域
+
+
+#### 文件打开与关闭
+fp=fopen(filename,mode)
+mode有
+r只读,打开文本文件
+w只写，建立新文件
+a追加，尾部追加内容
+
+b(二进制)
+rb 只读 打开二进制
+wb  。。。。。。
+ab 。。。。。。。
+fclose(fp)
+
+
++(读写)
+r+
+b+
+a+
+#### 文件顺序读写（上文件输出，输入内存，输入流；下文件输入，内存数据输出，输出流）
+EOF(-1)
+##### 字符
+int fgetc（FILE *fp）
+不错返回输出字符，错返回EOF
+int fputc（int char ,FILE *fp）
+char是字符的int值
+不错返回输入的字符，错返回EOF
+
+##### 文本行
+char* fgets(char *s ,int n,FILE *fp)
+成功返回首地址，失败NULL
+int fputs(const char *s,FILE *fp)$~~~~~$ps:不会再字符串末尾加\n
+成功非负，错误EOF
+
+##### 格式化
+int fscanf(FILE *fp,const char*format,....)
+int fprintf(FILE *fp,const char*format，...)
+format为格式字符 ...为参数列表
+类似于：
+
+    printf(format ,...)
+    fprintf(fp,"哟哟哟%d%s",n,s);
+成功返回字符数，失败返回负值
+
+##### 二进制
+size_t fread(const void *ptr,size_t size,size_t nmemb,FILE *stream）
+size_t fwrite(const void *ptr,size_t size,size_t nmemb,FILE *stream)
+ptr: 指向元素数组的指针（用于输入或者输出获取）
+size: 每个元素大小
+nmemb:元素个数
+stream:文件流
+
+eg:
+
+    char a[]="sadasafafasda";
+    char out[20];
+    fwrite(a,strlen(a)+1,1,fp);
+    frend(out,strlen(a)+1,1,fp);
+
+
+#### 文件定位
+##### fseek
+int fseek(FILE *fp long offset,int fromwhere)
+成功返回0，失败返回非0
+文件，偏移量，从哪里开始
+fromwhere:
+(1)SEEK_SET/0  文件开始
+(2)SEEK_CUR/1 当前
+(3)SEEK_END/2 结尾
+
+
+##### rewind
+void rewind(fp)
+重置位置指针到文件首部
+##### ftell
+long ftell(FILE *fp)
+用来读取当前相对于文件起始的偏移
+
+#### 文件检测
+##### ferror
+int ferror(FIlE *Stream)
+0对 非零错
+##### feof
+int feof(FILE *fp)
+检测是否结束，文件结束，返回非0
+文件结束符只能被clearerr（）清楚
+##### fflush
+int fflush(FILE *fp)
+清楚缓冲区内容。
