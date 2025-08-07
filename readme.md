@@ -18,7 +18,7 @@ shell练习项目
 ### shell_dirop
 对文件夹进行操作，是传统意义上的脚本，通过一定linux指令和shell语言对整体项目进行操作
 
-## [makefile](#makefile)](https://github.com/poplirain/Lujiu_code/tree/MAKEFILE_Program)
+## [makefile](https://github.com/poplirain/Lujiu_code/tree/MAKEFILE_Program)
 本文件夹不知为何变空，不过可以根据结构进行自己撰写练习，如果下个看makefile操作可以看完整项目complete project里边
 
 ## complete project
