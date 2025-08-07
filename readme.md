@@ -1,6 +1,6 @@
 # This is a readme.md
 东西都在分支里，
-## C_Program[C_Program](https://github.com/poplirain/Lujiu_code/tree/C_Program)
+## [C_Program](https://github.com/poplirain/Lujiu_code/tree/C_Program)
 ### C_code
 一些有助于理解c语言的练习项目
 
@@ -10,7 +10,7 @@
 ### Cprogram
 与C_git同
 
-## SHELL[SHELL](#SHELL)](https://github.com/poplirain/Lujiu_code/tree/Shell_Program)
+## [SHELL](https://github.com/poplirain/Lujiu_code/tree/Shell_Program)
 shell练习项目
 ### shell_arrandwhile
 其中用两种循环方式进行了数组的操作
@@ -18,13 +18,13 @@ shell练习项目
 ### shell_dirop
 对文件夹进行操作，是传统意义上的脚本，通过一定linux指令和shell语言对整体项目进行操作
 
-## makefile[[makefile](#makefile)](https://github.com/poplirain/Lujiu_code/tree/MAKEFILE_Program)
+## [makefile](#makefile)](https://github.com/poplirain/Lujiu_code/tree/MAKEFILE_Program)
 本文件夹不知为何变空，不过可以根据结构进行自己撰写练习，如果下个看makefile操作可以看完整项目complete project里边
 
 ## complete project
 完整的项目
 
-## markdown[markdown](#markdown)](https://github.com/poplirain/Lujiu_code/tree/Markdown)
+## [markdown](https://github.com/poplirain/Lujiu_code/tree/Markdown)
 ### vim
 操作
 ### linux
