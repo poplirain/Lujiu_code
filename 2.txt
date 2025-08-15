@@ -1,1 +1,7 @@
-add
+just use
+ls
+pwd
+list
+link
+docker
+ip link
